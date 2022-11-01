@@ -25,12 +25,19 @@ public class CameraMove : MonoBehaviour
     [SerializeField]
     private Vector2 _rotationXMinMax = new Vector2(-40, 40);
 
+    public bool isCursor;
+
     void Start() {
         // Cursor.lockState = CursorLockMode.Locked;
     }
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.LeftAlt)) SetCursor(true);
+        if (Input.GetKeyUp(KeyCode.LeftAlt)) SetCursor(false);
+
+        if (_target == null || isCursor) return;
+
         float mouseX = Input.GetAxis("Mouse X") * _mouseSensitivity;
         float mouseY = Input.GetAxis("Mouse Y") * _mouseSensitivity;
 
@@ -48,5 +55,13 @@ public class CameraMove : MonoBehaviour
 
         float delta = Input.mouseScrollDelta.y;
         if ((_distanceFromTarget - delta) > 2) _distanceFromTarget -= delta;
+    }
+
+    public void SetCursor(bool enable)
+    {
+        Cursor.lockState = enable ? CursorLockMode.None : CursorLockMode.Locked;
+        Cursor.visible = enable;
+
+        this.isCursor = enable;
     }
 }

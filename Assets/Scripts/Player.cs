@@ -10,15 +10,19 @@ public class Player : NetworkBehaviour
 
     [SyncVar(hook = nameof(SetCount))]
     public int count = 0;
+
+    public Material material;
     
 
     private void Start() {
         if (isLocalPlayer) {
             var camera = GameObject.FindWithTag("MainCamera").GetComponent<CameraMove>();
             camera._target = this.transform;
+
+            camera.SetCursor(false);
         }
 
-        Debug.Log($"is - {isLocalPlayer}");
+        material = GetComponent<MeshRenderer>().material;
     }
 
     private void Update() {
@@ -28,7 +32,6 @@ public class Player : NetworkBehaviour
         }
     }
 
-
     public override void OnStartServer()
     {
         Debug.Log("Server");
@@ -37,8 +40,8 @@ public class Player : NetworkBehaviour
     public override void OnStartClient()
     {
         Debug.Log("Client");
-        // CmdAddCount();
-        // count += 2;
+        var hud = GameObject.FindWithTag("HUD").GetComponent<Canvas>();
+        hud.enabled = true;
     }
 
     private void SetCount(int oldCount, int newCount) {
@@ -48,7 +51,5 @@ public class Player : NetworkBehaviour
     [Command]
     public void CmdAddCount() {
         count++;
-        // var player = GameObject.FindWithTag("Player");
-        // player.transform.position = new Vector3(1f, 1f, 1f);
     }
 }
