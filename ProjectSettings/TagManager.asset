@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Window
   - HUD
+  - Connection
+  - PlayerId
   layers:
   - Default
   - TransparentFX

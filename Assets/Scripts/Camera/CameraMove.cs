@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
+using Cursor = UnityEngine.Cursor;
 
 public class CameraMove : MonoBehaviour
 {
@@ -27,9 +30,11 @@ public class CameraMove : MonoBehaviour
 
     public bool isCursor;
 
-    void Start() {
-        // Cursor.lockState = CursorLockMode.Locked;
-    }
+    public Player player;
+
+    double position;
+
+    public Connection connection;
 
     void Update()
     {
@@ -37,6 +42,19 @@ public class CameraMove : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.LeftAlt)) SetCursor(false);
 
         if (_target == null || isCursor) return;
+
+        if (position == null) this.position = player.position;
+
+        Debug.Log(position);
+        Debug.Log(connection.listPlayers.Count);
+
+        if (Input.GetKeyDown(KeyCode.UpArrow)) SetPositionTarget(1);
+        if (Input.GetKeyDown(KeyCode.DownArrow)) SetPositionTarget(-1);
+
+        /*if (Input.GetKeyDown(KeyCode.DownArrow) && position <= connection?.listPlayers?.Count)
+        {
+            _target = connection?.listPlayers[(int)this.position--]?.transform;
+        }*/
 
         float mouseX = Input.GetAxis("Mouse X") * _mouseSensitivity;
         float mouseY = Input.GetAxis("Mouse Y") * _mouseSensitivity;
@@ -63,5 +81,12 @@ public class CameraMove : MonoBehaviour
         Cursor.visible = enable;
 
         this.isCursor = enable;
+    }
+
+    public void SetPositionTarget(int n)
+    {
+        this.position += n;
+
+        _target = connection.listPlayers[(int)this.position].transform;
     }
 }

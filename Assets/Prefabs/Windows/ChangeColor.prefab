@@ -122,13 +122,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5146418515620293348}
   m_TextComponent: {fileID: 5146418515763478405}
   m_Placeholder: {fileID: 5146418516955918899}
-  m_ContentType: 4
+  m_ContentType: 0
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 1
+  m_KeyboardType: 0
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 3
+  m_CharacterValidation: 0
   m_CharacterLimit: 0
   m_OnSubmit:
     m_PersistentCalls:
@@ -348,19 +348,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5146418516141053092}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5146418517687668417}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &5146418516744484403
 GameObject:
   m_ObjectHideFlags: 0
@@ -694,8 +682,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e82df42410e30f845a402d3de4b001e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: 
-  isActive: 0
+  Name: ChangeColor
+  isActive: 1
   saveButton: {fileID: 5146418516141053091}
 --- !u!114 &1770870704674848598
 MonoBehaviour:
@@ -710,4 +698,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: {r: 0, g: 0, b: 0, a: 0}
+  saveButton: {fileID: 5146418516141053091}
   colorInput: {fileID: 5146418515620293347}

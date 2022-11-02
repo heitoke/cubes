@@ -12,6 +12,18 @@ public class ModelWindow : MonoBehaviour
 
     public Button saveButton;
 
+    public delegate void GetColor();
+
+    public event GetColor save;
+
+    private void Start()
+    {
+        saveButton.onClick.AddListener(() =>
+        {
+            save?.Invoke();
+        });
+    }
+
     public void DestroyModel()
     {
         Destroy(this.gameObject, 10);

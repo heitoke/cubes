@@ -6,6 +6,14 @@ public class Window : MonoBehaviour
 {
     public static List<ModelWindow> windows = new List<ModelWindow>();
 
+    public ModelWindow[] models;
+
+    public Player player;
+
+    [Header("Modals")]
+    public ModelChangeColor ChangeColor;
+
+
     public void OpenModel(ModelWindow modelPrefab)
     {
         modelPrefab.isActive = true;
@@ -23,7 +31,7 @@ public class Window : MonoBehaviour
 
         canvas.enabled = enable;
 
-        if (!enable)
+        /*if (!enable)
         {
             ModelWindow lastModel = windows[windows.Count - 1];
 
@@ -32,6 +40,6 @@ public class Window : MonoBehaviour
             lastModel.DestroyModel();
 
             windows.RemoveAt(windows.Count - 1);
-        }
+        }*/
     }
 }
